@@ -1,0 +1,51 @@
+<<include=FALSE,echo=FALSE>>=
+load("scm_est.Rdata")
+w <- res[[1]]$w
+v <- res[[1]]$v
+loss.v <- sqrt(res[[1]]$loss.v)
+loss.w <- sqrt(res[[1]]$loss.w[1])
+nv <- rownames(v)
+@
+
+\begin{subtable}{.3\linewidth}
+\centering
+\caption{$W^*(V)$}
+\begin{tabular}{lr}
+\toprule
+\multicolumn{1}{l}{Country} & \multicolumn{1}{c}{$w_j$} \\
+\midrule
+Belgium &  \Sexpr{sprintf("%.3f", w["Belgium"])} \\
+Denmark &  \Sexpr{sprintf("%.3f", w["Denmark"])}\\
+Germany &  \Sexpr{sprintf("%.3f", w["Germany"])}\\
+Greece &  \Sexpr{sprintf("%.3f", w["Greece"])}\\
+Ireland &  \Sexpr{sprintf("%.3f", w["Ireland"])}\\
+Italy &  \Sexpr{sprintf("%.3f", w["Italy"])}\\
+Netherlands &  \Sexpr{sprintf("%.3f", w["Netherlands"])}\\
+\midrule
+RMSPE &  \Sexpr{sprintf("%.4f", loss.w)}\\
+\bottomrule
+\end{tabular}
+\end{subtable}%
+\begin{subtable}{.5\linewidth}
+\centering
+\caption{V}
+\begin{tabular}{lr}
+\toprule
+\multicolumn{1}{l}{Variable} & \multicolumn{1}{c}{$v_k$} \\
+\midrule
+Dissatisfaction with EU &  \Sexpr{sprintf("%.3f", v[grep("E_eubadIP", nv), 1])} \\
+Satisfaction with national democracy &  \Sexpr{sprintf("%.3f", v[grep("E_NatDem_satisfiedIP", nv), 1])}\\
+Unemployment rate &  \Sexpr{sprintf("%.3f", v[grep("unempIP",nv), 1])}\\
+Unemployment insurance generosity &  \Sexpr{sprintf("%.3f", v[grep("S_uegenIP",nv), 1])}\\
+Capital openess &  \Sexpr{sprintf("%.3f", v[grep("opencIP",nv), 1])}\\
+Chinese imports &  \Sexpr{sprintf("%.3f", v[grep("ch_imp_fns",nv), 1])}\\
+Right government share &  \Sexpr{sprintf("%.3f", v[grep("rightgovIP",nv), 1])}\\
+Avg. party position EU policy  &  \Sexpr{sprintf("%.3f", v[grep("eu_pos_meanIP",nv), 1])}\\
+Migration inflow  &  \Sexpr{sprintf("%.3f", v[grep("migr_inflIP",nv), 1])}\\
+RWP vote share in 1994 &  \Sexpr{sprintf("%.3f", v[grep("rr_votes",nv), 1])}\\
+\midrule
+RMSPE &  \Sexpr{sprintf("%.4f", loss.v)}\\
+\bottomrule
+\end{tabular}
+\end{subtable}
+

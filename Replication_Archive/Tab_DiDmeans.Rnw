@@ -1,0 +1,20 @@
+
+
+<<include=FALSE,echo=FALSE>>=
+load("DiD_prelim.Rdata")
+r <- lapply(res[[1]], function(z) sprintf("%.1f", z))
+r$est <- gsub("-", "$-$", r$est)
+@
+
+\begin{tabular}{r@{\hspace{40pt}}cc@{\hspace{20pt}}c}
+\toprule
+      & Before reform & After reform & Difference \\
+\midrule
+\multicolumn{1}{l}{EU8} & \Sexpr{r$est[1]} & \Sexpr{r$est[2]} & \Sexpr{r$est[5]} \\
+      & (\Sexpr{r$se[1]}) & (\Sexpr{r$se[2]}) & (\Sexpr{r$se[5]}) \\[3pt]
+\multicolumn{1}{l}{United Kingdom} & \Sexpr{r$est[3]} & \Sexpr{r$est[4]} & \Sexpr{r$est[6]} \\
+      & (\Sexpr{r$se[3]}) & (\Sexpr{r$se[4]}) & (\Sexpr{r$se[6]}) \\[3pt]
+\multicolumn{1}{l}{Difference} & \Sexpr{r$est[7]} & \Sexpr{r$est[8]} & \emph{\Sexpr{r$est[9]}} \\
+      & (\Sexpr{r$se[7]}) & (\Sexpr{r$se[8]}) & \emph{(\Sexpr{r$se[9]})} \\
+\bottomrule
+\end{tabular}

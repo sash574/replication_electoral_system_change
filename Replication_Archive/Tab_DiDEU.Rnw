@@ -1,0 +1,24 @@
+
+<<include=FALSE,echo=FALSE>>=
+load("DiDEU_est.Rdata")
+# fixed decimals via sprintf (note output is column-wise (est, se, ....))
+r <- lapply(res, function(z) gsub("-", "$-$", sprintf("%.3f", z)))
+
+@
+
+
+\begin{tabular}{l@{\hspace{4pt}}p{104mm}c@{\hspace{6pt}}l}
+\toprule
+\emph{M1} &  Panel DiD (assuming parallel trends) \dotfill & \Sexpr{r$m1[1]} & (\Sexpr{r$m1[2]})\\[3pt]
+\emph{M2} &  Panel DiD, parallel trends conditional on covariates &  & \\[3pt]
+  &  Devolution (regional authority index)  \dotfill & \Sexpr{r$m2a[1]} & (\Sexpr{r$m2a[2]}) \\[3pt]
+  &  \,+ Economic Integration + welfare generosity  \dotfill & \Sexpr{r$m2b[1]} &(\Sexpr{r$m2b[2]}) \\[3pt]
+  & \,+ Immigration inflows \dotfill & \Sexpr{r$m2c[1]} & (\Sexpr{r$m2c[2]})\\[3pt]
+
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[online]
+\scriptsize
+\item[\emph{Notes:}] 
+Estimates with standard errors in parentheses. \emph{M1:} Time-average ATT from multi-period DiD panel estimator. N=72. \emph{M2} uses an estimator relaxing the parallel trends assumption conditional on covariates \citep{CallawaySantAnna2018}. Covariates include a regional authority index, capital openness index, Chinese import penetration,  generosity of unemployment insurance, and immigration inflows (the latter limits the analysis period to 1984--2014 and excludes France due to missing immigration inflow data). See appendix for more details. Bootstrapped standard errors using 5000 replicates.
+\end{tablenotes}

@@ -1,0 +1,19 @@
+
+
+<<include=FALSE,echo=FALSE>>=
+load("DiD_prelim.Rdata")
+r <- lapply(res[[2]], function(z) sprintf("%.3f", z))
+@
+
+
+\begin{tabular}{l@{\hspace{44pt}}llrll}
+\toprule
+      & \multicolumn{2}{c}{Linear trend} &  & \multicolumn{2}{c}{Quadratic trend} \\
+                        & $p_{rob}$ & $p_{wild}$ & & $p_{rob}$ & $p_{wild}$ \\
+\midrule
+Test without covariates & \Sexpr{r$p.rob[1]}  & \Sexpr{r$p.wild[1]}  &  & \Sexpr{r$p.rob[2]}  & \Sexpr{r$p.wild[2]} \\
+Test with covariates & \Sexpr{r$p.rob[3]}  & \Sexpr{r$p.wild[3]}  &  & \Sexpr{r$p.rob[4]}  & \Sexpr{r$p.wild[4]} \\
+\bottomrule
+\end{tabular}
+
+

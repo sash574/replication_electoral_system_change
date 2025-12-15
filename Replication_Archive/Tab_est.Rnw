@@ -1,0 +1,21 @@
+
+<<include=FALSE,echo=FALSE>>=
+load("scm_est.Rdata")
+out <- res$post_p
+e <- sprintf("%.1f", out[,2])
+p <- sprintf("%.3f", out[,4])
+out <- res$avg_p
+a <- sprintf("%.1f", out[1])
+ap <- sprintf("%.3f", out[2])
+@
+
+
+\begin{tabular}{l@{\hspace{28pt}}ccccc}
+\toprule
+   & \multicolumn{4}{c}{European Election} \\
+   & 1999  & 2004  & 2009  & 2014 & 1999-2014 \\
+\midrule
+$\Delta(Y_{1t},Y_{0t})$ & \Sexpr{e[1]}  &  \Sexpr{e[2]} & \Sexpr{e[3]}   & \Sexpr{e[4]} & \Sexpr{a}  \\
+ $p$-value & \Sexpr{p[1]}  &  \Sexpr{p[2]} & \Sexpr{p[3]}   & \Sexpr{p[4]} & \Sexpr{ap}  \\
+\bottomrule
+\end{tabular}

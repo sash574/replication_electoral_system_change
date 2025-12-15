@@ -1,0 +1,29 @@
+
+<<include=FALSE,echo=FALSE>>=
+load("DiD_est.Rdata")
+# fixed decimals via sprintf (note output is list of vectors)
+r <- lapply(res, function(z) sprintf("%.2f", z))
+@
+
+
+
+\begin{tabular}{l@{\hspace{4pt}}p{104mm}c@{\hspace{6pt}}l}
+\toprule
+\emph{M1} &  Two-group, two-period DiD \dotfill & \Sexpr{r$m1[1]} &  (\Sexpr{r$m1[3]})\\[3pt]
+\emph{M2} &  Multiple-period panel DiD \dotfill & \Sexpr{r$m2[1]} & (\Sexpr{r$m2[2]})\\[3pt]
+\emph{M3} &  Panel DiD, parallel trends conditional on covariates &  & \\[3pt]
+  &  Devolution (regional authority index)  \dotfill & \Sexpr{r$m3a[1]} & (\Sexpr{r$m3a[2]}) \\[3pt]
+  &  \,+ Economic Integration (capital openess, Chinese imports)  \dotfill & \Sexpr{r$m3b[1]} &(\Sexpr{r$m3b[2]}) \\[3pt]
+  & \,+ Welfare generosity (unemployment insurance) \dotfill & \Sexpr{r$m3c[1]} & (\Sexpr{r$m3c[2]})\\[3pt]
+  & \,+ Euroskepticism (citizen attitudes, party positions) \dotfill & \Sexpr{r$m3d[1]} & (\Sexpr{r$m3d[2]})\\[3pt]
+  & \,+ Immigration inflows\tnote{\emph{a}} \dotfill & \Sexpr{r$m3e[1]} & (\Sexpr{r$m3e[2]})\\
+
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[online]
+\scriptsize
+\item[\emph{Notes:}] 
+Estimates with standard errors in parentheses.  \emph{M1} is a two-period analysis using pre- and post-reform averages. N=18. Wild bootstrap SEs (5000 replicates, Rademacher weights). \emph{M2:} Time-average ATT from multi-period DiD panel estimator \citep{CallawaySantAnna2018}. N=72. \emph{M3} relaxes the parallel trends assumption conditional on covariates. Bootstrapped standard errors using 5000 replicates.
+\item[\emph{a}] Covers 1984 to 2014 and excludes France due to missing immigration inflow data.
+\end{tablenotes}
+
