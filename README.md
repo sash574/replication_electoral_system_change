@@ -2,7 +2,7 @@
 
 This is a replication of the main body of the following paper, coded in Python using the pysyncon module:
 
-Becher M, Menéndez González I, Stegmueller D. Proportional Representation and Right-Wing Populism: Evidence from Electoral System Change in Europe. British Journal of Political Science. 2023;53(1):261-268. doi:10.1017/S0007123421000703
+Becher M, Menéndez González I, Stegmueller D. Proportional Representation and Right-Wing Populism: Evidence from Electoral System Change in Europe. British Journal of Political Science. 2023. 53(1). 261-268. https://doi.org/10.1017/S0007123421000703
 
 It also includes several robustness checks of which some are part of the appendix of the paper.
 
